@@ -1,0 +1,28 @@
+---
+AWSTemplateFormatVersion: "2010-09-09"
+Description:
+  This is the first cloudformation template to create S3 bucket
+
+Parameters:
+  S3bucketname:
+    Type: String
+  
+  EC2parametervalues:
+    Type: String
+    Default: t2.micro
+    AllowedValues:
+      - t2.micro
+      - m1.small
+    Description: Enter either t2.micro or m1.small
+
+Resources:
+  AnilS3bucket:
+    Type: AWS::S3::Bucket
+    Properties: 
+      BucketName: !Ref S3bucketname
+
+  AnilEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties: 
+      ImageId: 
+      InstanceType: !Ref EC2parametervalues
